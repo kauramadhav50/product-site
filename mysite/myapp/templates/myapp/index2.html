@@ -1,5 +1,5 @@
-{% extends 'myapp/base.html' %}
-{% comment %} {% extends 'myapp/base2.html' %} {% endcomment %}
+{% comment %} {% extends 'myapp/base.html' %} {% endcomment %}
+{% comment %} {% extends 'myapp/base.html' %} {% endcomment %}
 {% block body %}
 <div class="product-container flex">
 {% for product in products %}
@@ -18,16 +18,18 @@
             <div class="text-green-700 font-bold">
                 ${{ product.price }}
             </div>
-
-            
-
             <div class="mt-5">
-                <a class="bg-green-500 text-white px-4 py-2" href="{% url 'detail' product.id %}">View Details</a>
+                <a class="bg-green-500 text-white px-4 py-2" href="{% url 'detail' product.id %}" onclick="myFunction()">View Details</a>
             </div>
+            {% endif %}
         </div>
 
     </div>
-   
+    <script>
+        function myFunction() {
+          alert("Pls first Login");
+        }
+        </script>
 
 {% endfor %}
 </div>

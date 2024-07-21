@@ -7,6 +7,7 @@ import stripe,json
 from .forms import ProductForm,UserRegistrationForm
 from django.db.models import Sum
 import datetime
+from django.contrib.auth import logout
 # Create your views here.
 def index(request):
     products = Product.objects.all()
@@ -160,3 +161,7 @@ def sales(request):
     print(product_sales_sums)
 
     return render(request, 'myapp/sales.html',{'total_sales':total_sales,'yearly_sales':yearly_sales,'monthly_sales':monthly_sales,'weekly_sales':weekly_sales,'daily_sales_sums':daily_sales_sums,'product_sales_sums':product_sales_sums})
+
+def logout_view(request):
+    logout(request)
+    return render(request, 'myapp/logout.html')
